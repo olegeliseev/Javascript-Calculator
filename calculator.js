@@ -1,6 +1,7 @@
 const currentOperandDisplay = document.querySelector(".current-operand");
 const previousOperandDisplay = document.querySelector(".previous-operand");
 const computeButton = document.querySelector(".compute");
+const allClearButton = document.querySelector(".clear");
 
 const numbers = document.querySelectorAll(".number");
 const numbersArray = Array.from(numbers);
@@ -55,3 +56,14 @@ computeButton.addEventListener("click", () => {
     compute(currentOperation);
 })
 
+//Сбрасывает значения предыдущего и текущего операндов, а также знак текущей операции
+const allClear = () => {
+    previousOperandDisplay.innerHTML = "";
+    currentOperandDisplay.innerHTML = "";
+    currentOperation = "";
+}
+
+//Вызывает функцию полного сброса allClear при нажатии на кнопку AC
+allClearButton.addEventListener("click", () => {
+    allClear();
+})
