@@ -2,6 +2,7 @@ const currentOperandDisplay = document.querySelector(".current-operand");
 const previousOperandDisplay = document.querySelector(".previous-operand");
 const computeButton = document.querySelector(".compute");
 const allClearButton = document.querySelector(".clear");
+const deleteButton = document.querySelector(".delete");
 
 const numbers = document.querySelectorAll(".number");
 const numbersArray = Array.from(numbers);
@@ -66,4 +67,14 @@ const allClear = () => {
 //Вызывает функцию полного сброса allClear при нажатии на кнопку AC
 allClearButton.addEventListener("click", () => {
     allClear();
+});
+
+//Удаляет последнее введенное значение в текущем операнде
+const del = () => {
+    currentOperandDisplay.innerHTML = currentOperandDisplay.innerHTML.substring(0, currentOperandDisplay.innerHTML.length - 1);
+}
+
+//Вызывает функцию удаления последнего числа в текущем операнде
+deleteButton.addEventListener("click", () => {
+    del();
 })
