@@ -16,15 +16,19 @@ numbersArray.forEach(element => {
     });
 });
 
-//Передает значение текущего операнда в предедущий, а текущий обнуляется
-const operation = () => {
-    previousOperandDisplay.innerHTML = currentOperandDisplay.innerHTML;
-    currentOperandDisplay.innerHTML = "";
-}
-
 const operationButtons = document.querySelectorAll(".operation");
 const operationButtonsArray = Array.from(operationButtons);
-let currentOperation; 
+let currentOperation;
+
+//Передает значение текущего операнда в предедущий, а текущий обнуляется
+const operation = () => {
+    if (previousOperandDisplay.innerHTML.length > 0) {
+        compute();
+    } else {
+        previousOperandDisplay.innerHTML = currentOperandDisplay.innerHTML + " " + currentOperation;
+        currentOperandDisplay.innerHTML = "";
+    }
+}
 
 //Присваивает переменной currentOperation знак текущей операции и вызывает функцию operation
 operationButtonsArray.forEach(element => {
@@ -40,7 +44,7 @@ const compute = () => {
     let previousOperand = parseFloat(previousOperandDisplay.innerHTML);
     let currentOperand = parseFloat(currentOperandDisplay.innerHTML);
     let result;
-    if(currentOperation === "+") {
+    if (currentOperation === "+") {
         result = previousOperand + currentOperand;
     } else if (currentOperation === "-") {
         result = previousOperand - currentOperand;
@@ -82,9 +86,9 @@ deleteButton.addEventListener("click", () => {
 
 //Добавляет точку для дроби в том случае, если текущей операнд не пустой, и точка не была добавлена до этого
 const point = () => {
-    if(currentOperandDisplay.innerHTML.length <= 0) {
+    if (currentOperandDisplay.innerHTML.length <= 0) {
         return;
-    } else if(currentOperandDisplay.innerHTML.includes(".")) {
+    } else if (currentOperandDisplay.innerHTML.includes(".")) {
         return;
     } else {
         currentOperandDisplay.innerHTML += ".";

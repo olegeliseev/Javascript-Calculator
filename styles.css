@@ -20,9 +20,27 @@ body {
     border: 1px solid black;
     min-height: 60px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
+    padding: 6px;
+    font-size: 16px;
+}
+
+.current-operand, .previous-operand {
+    text-align: right;
+    max-width: 200px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.current-operand {
+    font-size: 16px;
+}
+
+.previous-operand {
+    font-size: 12px;
 }
 
 .calculator-grid {
