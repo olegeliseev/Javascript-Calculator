@@ -3,6 +3,7 @@ const previousOperandDisplay = document.querySelector(".previous-operand");
 const computeButton = document.querySelector(".compute");
 const allClearButton = document.querySelector(".clear");
 const deleteButton = document.querySelector(".delete");
+const pointButton = document.querySelector(".point");
 
 const numbers = document.querySelectorAll(".number");
 const numbersArray = Array.from(numbers);
@@ -36,8 +37,8 @@ operationButtonsArray.forEach(element => {
 
 //Производит операцию в зависимости от знака и обновляет значения предыдущего и текущего операндов
 const compute = () => {
-    let previousOperand = parseInt(previousOperandDisplay.innerHTML);
-    let currentOperand = parseInt(currentOperandDisplay.innerHTML);
+    let previousOperand = parseFloat(previousOperandDisplay.innerHTML);
+    let currentOperand = parseFloat(currentOperandDisplay.innerHTML);
     let result;
     if(currentOperation === "+") {
         result = previousOperand + currentOperand;
@@ -77,4 +78,20 @@ const del = () => {
 //Вызывает функцию удаления последнего числа в текущем операнде
 deleteButton.addEventListener("click", () => {
     del();
+})
+
+//Добавляет точку для дроби в том случае, если текущей операнд не пустой, и точка не была добавлена до этого
+const point = () => {
+    if(currentOperandDisplay.innerHTML.length <= 0) {
+        return;
+    } else if(currentOperandDisplay.innerHTML.includes(".")) {
+        return;
+    } else {
+        currentOperandDisplay.innerHTML += ".";
+    }
+}
+
+//Вызывает функицю добавления точки для дроби 
+pointButton.addEventListener("click", () => {
+    point();
 })
