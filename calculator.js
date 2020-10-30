@@ -1,43 +1,21 @@
-const currentOperandDisplay = document.querySelector(".current-operand");
-const previousOperandDisplay = document.querySelector(".previous-operand");
-const computeButton = document.querySelector(".compute");
+const numbers = document.querySelectorAll(".number");
+const operationButtons = document.querySelectorAll(".operation");
 const allClearButton = document.querySelector(".clear");
 const deleteButton = document.querySelector(".delete");
 const pointButton = document.querySelector(".point");
-
-const numbers = document.querySelectorAll(".number");
-const numbersArray = Array.from(numbers);
-
-//Присваивает цифру нажатой кнопки к текущему операнду
-numbersArray.forEach(element => {
-    element.addEventListener("click", () => {
-        let num = element.innerHTML;
-        currentOperandDisplay.innerHTML += num;
-    });
-});
-
-const operationButtons = document.querySelectorAll(".operation");
-const operationButtonsArray = Array.from(operationButtons);
+const computeButton = document.querySelector(".compute");
+const currentOperandDisplay = document.querySelector(".current-operand");
+const previousOperandDisplay = document.querySelector(".previous-operand");
 let currentOperation;
 
 //Передает значение текущего операнда в предедущий, а текущий обнуляется
 const operation = () => {
     if (previousOperandDisplay.innerHTML.length > 0) {
         compute();
-    } else {
-        previousOperandDisplay.innerHTML = currentOperandDisplay.innerHTML + " " + currentOperation;
-        currentOperandDisplay.innerHTML = "";
     }
+    previousOperandDisplay.innerHTML = currentOperandDisplay.innerHTML + " " + currentOperation;
+    currentOperandDisplay.innerHTML = "";
 }
-
-//Присваивает переменной currentOperation знак текущей операции и вызывает функцию operation
-operationButtonsArray.forEach(element => {
-    element.addEventListener("click", () => {
-        currentOperation = element.innerHTML;
-        operation();
-    });
-});
-
 
 //Производит операцию в зависимости от знака и обновляет значения предыдущего и текущего операндов
 const compute = () => {
@@ -57,32 +35,17 @@ const compute = () => {
     currentOperandDisplay.innerHTML = result;
 }
 
-//Вызывает функцию счета при нажатии на кнопку "="
-computeButton.addEventListener("click", () => {
-    compute(currentOperation);
-})
-
 //Сбрасывает значения предыдущего и текущего операндов, а также знак текущей операции
 const allClear = () => {
     previousOperandDisplay.innerHTML = "";
     currentOperandDisplay.innerHTML = "";
-    currentOperation = "";
+    currentOperation = undefined;
 }
-
-//Вызывает функцию полного сброса allClear при нажатии на кнопку AC
-allClearButton.addEventListener("click", () => {
-    allClear();
-});
 
 //Удаляет последнее введенное значение в текущем операнде
 const del = () => {
     currentOperandDisplay.innerHTML = currentOperandDisplay.innerHTML.substring(0, currentOperandDisplay.innerHTML.length - 1);
 }
-
-//Вызывает функцию удаления последнего числа в текущем операнде
-deleteButton.addEventListener("click", () => {
-    del();
-})
 
 //Добавляет точку для дроби в том случае, если текущей операнд не пустой, и точка не была добавлена до этого
 const point = () => {
@@ -95,7 +58,38 @@ const point = () => {
     }
 }
 
+//Присваивает цифру нажатой кнопки к текущему операнду
+numbers.forEach(element => {
+    element.addEventListener("click", () => {
+        let num = element.innerHTML;
+        currentOperandDisplay.innerHTML += num;
+    });
+});
+
+//Присваивает переменной currentOperation знак текущей операции и вызывает функцию operation
+operationButtons.forEach(element => {
+    element.addEventListener("click", () => {
+        currentOperation = element.innerHTML;
+        operation();
+    });
+});
+
+//Вызывает функцию счета при нажатии на кнопку "="
+computeButton.addEventListener("click", () => {
+    compute(currentOperation);
+});
+
+//Вызывает функцию полного сброса allClear при нажатии на кнопку AC
+allClearButton.addEventListener("click", () => {
+    allClear();
+});
+
+//Вызывает функцию удаления последнего числа в текущем операнде
+deleteButton.addEventListener("click", () => {
+    del();
+});
+
 //Вызывает функицю добавления точки для дроби 
 pointButton.addEventListener("click", () => {
     point();
-})
+});

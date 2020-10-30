@@ -29,8 +29,8 @@ body {
 }
 
 .current-operand, .previous-operand {
+    max-width: 180px;
     text-align: right;
-    max-width: 200px;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
