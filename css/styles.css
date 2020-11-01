@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: rgb(232, 232, 232);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 230px;
+    min-height: 362px;
+    box-shadow: 5px 5px 10px #b6a9a9, -5px -5px 10px #fff;
+    border-radius: 10px;
+}
+
+.display {
+    margin: 12px;
+    min-height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 6px;
+    font-size: 16px;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 5px;
+}
+
+.current-operand, .previous-operand {
+    color: rgb(0, 0, 0, 60%);
+    max-width: 192px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.current-operand {
+    font-size: 16px;
+}
+
+.previous-operand {
+    font-size: 12px;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 42px);
+    grid-template-rows: repeat(5, 42px);
+    grid-gap: 12px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.btn {
+    color: rgb(0, 0, 0, 60%);
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
+    font-size: 0.8rem;
+}
+
+.btn:hover {
+    color: #3498db;
+}
+
+.btn:active {
+    color: #3498db;
+    box-shadow: inset 1px 1px 1px #babecc, inset -1px -1px 1px #fff;
+}
+
+.clear, .delete {
+    font-size: 0.7rem;
+}
+
+.span-2 {
+    width: 96px;
+    grid-column: span 2;
+}
+
+.description {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: rgb(0, 0, 0, 30%);
+    text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
+}
+
+.description > a, .description > a:visited {
+    text-decoration: none;
+    color: rgb(0, 0, 0, 50%);
+    text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
+}

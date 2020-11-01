@@ -10,10 +10,12 @@ let currentOperation;
 
 //Передает значение текущего операнда в предедущий, а текущий обнуляется
 const operation = () => {
-    if (previousOperandDisplay.innerHTML.length > 0) {
+    if (currentOperandDisplay.innerHTML.length === 0) {
+        return;
+    } else if (previousOperandDisplay.innerHTML.length > 0) {
         compute();
     }
-    previousOperandDisplay.innerHTML = currentOperandDisplay.innerHTML + " " + currentOperation;
+    previousOperandDisplay.innerHTML = `${currentOperandDisplay.innerHTML} ${currentOperation}`;
     currentOperandDisplay.innerHTML = "";
 }
 
@@ -22,14 +24,22 @@ const compute = () => {
     let previousOperand = parseFloat(previousOperandDisplay.innerHTML);
     let currentOperand = parseFloat(currentOperandDisplay.innerHTML);
     let result;
-    if (currentOperation === "+") {
-        result = previousOperand + currentOperand;
-    } else if (currentOperation === "-") {
-        result = previousOperand - currentOperand;
-    } else if (currentOperation === "*") {
-        result = previousOperand * currentOperand;
-    } else if (currentOperation === "÷") {
-        result = previousOperand / currentOperand;
+    if(isNaN(previousOperand) || isNaN(currentOperand)) return;
+    switch (currentOperation) {
+        case "+":
+            result = previousOperand + currentOperand;
+            break;
+        case "-":
+            result = previousOperand - currentOperand;
+            break;
+        case "*":
+            result = previousOperand * currentOperand;
+            break;
+        case "÷":
+            result = previousOperand / currentOperand;
+            break;
+        default: 
+            return;
     }
     previousOperandDisplay.innerHTML = "";
     currentOperandDisplay.innerHTML = result;
@@ -44,7 +54,7 @@ const allClear = () => {
 
 //Удаляет последнее введенное значение в текущем операнде
 const del = () => {
-    currentOperandDisplay.innerHTML = currentOperandDisplay.innerHTML.substring(0, currentOperandDisplay.innerHTML.length - 1);
+    currentOperandDisplay.innerHTML = currentOperandDisplay.innerHTML.slice(0, -1);
 }
 
 //Добавляет точку для дроби в том случае, если текущей операнд не пустой, и точка не была добавлена до этого
