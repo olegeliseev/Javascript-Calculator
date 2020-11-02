@@ -15,6 +15,7 @@ body {
     align-items: center;
 }
 
+/* Общий контейнер */
 .calculator {
     width: 230px;
     min-height: 362px;
@@ -22,6 +23,7 @@ body {
     border-radius: 10px;
 }
 
+/* Поле вывода */
 .display {
     margin: 12px;
     min-height: 80px;
@@ -48,6 +50,7 @@ body {
     color: rgb(0, 0, 0, 50%);
 }
 
+/* Кнопки клавиатуры */
 .keyboard {
     display: grid;
     grid-template-columns: repeat(4, 42px);
@@ -60,6 +63,7 @@ body {
     margin: 20px auto;
 }
 
+/* Стилизация каждой отдельной кнопки */
 .btn {
     color: rgb(0, 0, 0, 60%);
     width: 42px;
@@ -87,6 +91,7 @@ body {
     font-size: 0.7rem;
 }
 
+/* Для кнопки = */
 .span-2 {
     width: 94px;
     grid-column: span 2;
@@ -99,7 +104,7 @@ body {
     text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
 }
 
-.description > a, .description > a:visited, .description > i {
+.description > a, .description > a:visited {
     text-decoration: none;
     color: rgb(0, 0, 0, 50%);
     text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
