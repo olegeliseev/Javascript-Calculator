@@ -59,7 +59,16 @@ class Calculator {
     }
 
     percent() {
-        this.currentOperand = parseFloat(this.currentOperand / 100);
+        let previous = parseFloat(this.previousOperand);
+        let current = parseFloat(this.currentOperand);
+        let result;
+        if (current !== 0 && isNaN(previous)) {
+            result = current / 100;
+            this.currentOperand = result;
+        } else if (previous !== 0) {
+            result = (current * 100) / previous;
+            this.currentOperand = `${result}%`;
+        }
     }
 
     compute() {
@@ -123,7 +132,7 @@ allClearButton.addEventListener("click", () => {
 percentButton.addEventListener("click", () => {
     calculator.percent();
     calculator.updateDisplay();
-})
+});
 
 pointButton.addEventListener("click", () => {
     calculator.point();
