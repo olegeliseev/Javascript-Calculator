@@ -30,8 +30,8 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
-    padding: 6px;
-    font-size: 16px;
+    padding: 14px;
+    font-size: 0.8rem;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
     border-radius: 5px;
 }
@@ -43,19 +43,16 @@ body {
     word-wrap: break-word;
 }
 
-.current-operand {
-    font-size: 16px;
-}
-
 .previous-operand {
-    font-size: 12px;
+    font-size: 0.6rem;
+    color: rgb(0, 0, 0, 50%);
 }
 
 .keyboard {
     display: grid;
     grid-template-columns: repeat(4, 42px);
     grid-template-rows: repeat(5, 42px);
-    grid-gap: 12px;
+    grid-gap: 10px;
     justify-content: center;
     align-items: center;
     background-color: rgb(232, 232, 232);
@@ -91,7 +88,7 @@ body {
 }
 
 .span-2 {
-    width: 96px;
+    width: 94px;
     grid-column: span 2;
 }
 
@@ -102,7 +99,7 @@ body {
     text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
 }
 
-.description > a, .description > a:visited {
+.description > a, .description > a:visited, .description > i {
     text-decoration: none;
     color: rgb(0, 0, 0, 50%);
     text-shadow: 1px 1px 2px #babecc, -1px -1px 2px #faf4f4;
